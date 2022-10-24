@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	title:{
+		text: "ASK Plot"
+	},
+	axisY:{ 
+		title: "Binary Level",
+		interval: 1,
+		suffix: "",
+        range: [-1, 1],
+	},
+
+    axisX:{
+    gridThickness: 0,
+    tickLength: 0,
+    lineThickness: 0,
+    labelFormatter: function(){
+      return " ";
+    }
+  },
+	data: [{
+		type: "stepLine",
+		markerSize: 5,
+		dataPoints: [
+			{ x: 0, y: Number('<%_ d1 %>') },
+			{ x: 1, y: Number("<%_ d2 %>")},
+			{ x: 2, y: Number("<%_ d3 %>")},
+			{ x: 3, y: Number("<%_ d4 %>"), indexLabel: "Highest", indexLabelFontColor: "#C24642" },
+            { x: 4, y: Number("<%_ d5 %>")},
+            { x: 5, y: Number("<%_ d6 %>")},
+            // { x: 6, y: 0},
+        ]
+	}]
+});
+ chart.render();
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<%- include('partials/header') %>
+
+
+
+<div class="intro">
+    <h1 class="head">ASK Input</h1>
+</div>
+
+<div class="container">
+
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card py-3 px-2">
+
+                <form class="myform" method="post">
+                    <label for="ip1">Input Bitstream</label>
+                    <br>
+                    <input type="number" maxlength="1" max="1" min="0" value="1" name="ip1" disabled>
+                    <input type="number" maxlength="1" max="1" min="0" value="0" name="ip2" disabled>
+                    <input type="number" maxlength="1" max="1" min="0" value="1" name="ip3" disabled >
+                    <input type="number" maxlength="1" max="1" min="0" value="0" name="ip4" disabled>
+                    <input type="number" maxlength="1" max="1" min="0" value="1" name="ip5" disabled>
+                    <input type="number" maxlength="1" max="1" min="0" value="0" name="ip6" disabled>
+                    <div class="form-group mt-3"> <button type="submit" class="btn btn-block btn-dark btn-lg" id="plot"><small>  Plot </small></button> </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+<script>
+    document.getElementById("plot").onclick = function () {
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        exportEnabled: true,
+        title:{
+            text: "Line Codes"
+        },
+        axisY:{ 
+            title: "Binary Level",
+            interval: 1,
+            suffix: "",
+            range: [-1, 1],
+        },
+    
+        axisX:{
+        gridThickness: 0,
+        tickLength: 0,
+        lineThickness: 0,
+        labelFormatter: function(){
+          return " ";
+        }
+      },
+        data: [{
+            type: "stepLine",
+            markerSize: 5,
+            dataPoints: [
+                { x: 0, y: 1 },
+                { x: 1, y: -1},
+                { x: 2, y:1, indexLabel: "Highest", indexLabelFontColor: "#C24642" },
+                { x: 3, y: -1, indexLabel: "Lowest", indexLabelFontColor: "#C24642" },
+                { x: 4, y: 1},
+                { x: 5, y:-1}
+            ]
+        }]
+    });
+     chart.render();
+    }
+    </script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+
+
+
+<br>
+<br>
+<br>
+
+
+<!-- <script>
+var prev_handler1 = document.getElementById("plot").onclick;
+    document.getElementById("plot").onclick = function () {
+    if (prev_handler1) {
+        prev_handler1();
+    }
+    // second code here...
+    var chart = new CanvasJS.Chart("chartContainer2", {
+        animationEnabled: true,
+        zoomEnabled: true,
+        title:{
+            text: "Carrier Signal" 
+        },
+        data: data  // random generator below
+    });
+    chart.render();
+    
+    }
+
+    var y = 0;
+    var data = [];
+    var dataSeries1 = { type: "line" };
+    var dataPoints1 = [];
+
+    for (var i=-90;   i <=90; i+=0.25 ){
+        y=(Math.sin(i))
+        dataPoints1.push({
+            x:i,
+            y:y,
+        });
+    }
+    dataSeries1.dataPoints1 = dataPoints1;
+    data.push(dataSeries1);
+
+ 
+
+</script>
+
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div id="chartContainer2" style="height: 370px; width: 100%;"></div> -->
+
+
+<br>
+<br>
+<br>
+
+<script>
+
+    data_pts1=1;
+    data_pts2=0;
+    data_pts3=1;
+    data_pts4=0;
+    data_pts5=1;
+    data_pts6=0;
+    
+    var prev_handler = document.getElementById("plot").onclick;
+        document.getElementById("plot").onclick = function () {
+        if (prev_handler) {
+            prev_handler();
+        }
+        // second code here...
+        var chart = new CanvasJS.Chart("chartContainer0", {
+            animationEnabled: true,
+            zoomEnabled: true,
+            title:{
+                text: "ASK Signal" 
+            },
+            data: data  // random generator below
+        });
+        chart.render();
+        
+        }
+    
+        var y = 0;
+        var data = [];
+        var dataSeries = { type: "line" };
+        var dataPoints = [];
+    
+        if(data_pts1===1){
+            for (var i=-180;   i <=-120; i+=0.25 ){
+            y=(Math.sin(i))
+            dataPoints.push({
+                x:i,
+                y:y,
+            });
+        }
+            if (data_pts2===0) {
+                for(var i=-120;i<=-60;i+=0.25){
+                    y=0;
+                    dataPoints.push({
+                        x:i,
+                        y:y,
+                    });
+        }
+                if (data_pts3===1){
+                    for(var i=-60;i<=0;i+=0.25){
+                        y=(Math.sin(i))
+                        dataPoints.push({
+                        x:i,
+                        y:y,
+                    });  
+        }
+                    if (data_pts4===0) {
+                        for(var i=0;i<=60;i+=0.25){
+                        y=0;
+                        dataPoints.push({
+                        x:i,
+                        y:y,
+                    });
+        }
+                        if (data_pts5===1) {
+                            for(var i=60;i<=120;i+=0.25){
+                                y=(Math.sin(i))
+                                dataPoints.push({
+                                x:i,
+                                y:y,
+                    }); 
+        }
+                        
+                                if (data_pts6===0) {
+                                    for(var i=120;i<=180;i+=0.25){
+                                        y=0;
+                                        dataPoints.push({
+                                        x:i,
+                                        y:y
+                    });
+        }
+}
+    
+    
+}
+                    
+    
+    
+    
+    
+    
+} 
+                  
+                  
+                  
+                  
+}
+                
+}      
+
+
+};
+
+        dataSeries.dataPoints = dataPoints;
+        data.push(dataSeries);
+    
+     
+    
+    </script>
+    
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <div id="chartContainer0" style="height: 370px; width: 100%;"></div>
+    
+
+<br>
+<br>
+<br>
+
+
+
+<%- include('partials/footer') %>
