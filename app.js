@@ -140,17 +140,6 @@ app.get("/", function(req,res){
         )
 });
 
-//Homepage Route
-// app.get("/", function(req,res){
-//     // data1=Number(data1);
-//     // data2=Number(data2);
-//     // data3=Number(data3);
-//     // data4=Number(data4);
-//     // data5=Number(data5);
-//     // data6=Number(data6);
-// console.log(data1);
-//     res.render('home')     
-// });
 
 
 
